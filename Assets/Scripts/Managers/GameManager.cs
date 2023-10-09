@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public TankManager[] tanks;
+    public TankManager[] tanks; //List of tanks in level, 1st tank is player
     public CameraControl cameraControl;
 
     // Start is called before the first frame update

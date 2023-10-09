@@ -7,7 +7,7 @@ public class CameraControl : MonoBehaviour
     public float minSize = 6.5f;
     [HideInInspector] public Transform[] targets;
 
-    private Camera camera; //Camera Reference
+    [HideInInspector] public Camera camera; //Camera Reference
     private Vector3 desiredPosition; //Position camera is moving towards
 
     private Vector3 moveVelocity; //Reference velocity for smooth damping of camera position

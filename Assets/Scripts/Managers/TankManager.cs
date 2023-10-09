@@ -11,14 +11,42 @@ public class TankManager
     [HideInInspector] public int tankNumber;
     [HideInInspector] public GameObject instance;
 
+    private TankMovement movement;
+
     public void SetUp()
     {
         //Grab Tank Components
         //
+        movement = instance.GetComponent<TankMovement>();
 
         //Use tank number?
+        movement.tankNumber = tankNumber;
 
+        //Update tank color
+        MeshRenderer[] renderers = instance.GetComponentsInChildren<MeshRenderer>();
 
+        for(int i=0; i<renderers.Length; i++)
+        {
+            renderers[i].material.color = tankColor;
+        }
+    }
 
+    public void DisableControl()
+    {
+        movement.enabled = false;
+    }
+
+    public void EnableControl()
+    {
+        movement.enabled = true;
+    }
+
+    public void Reset()
+    {
+        instance.transform.position = spawnPoint.position;
+        instance.transform.rotation = spawnPoint.rotation;
+
+        instance.SetActive(false);
+        instance.SetActive(true);
     }
 }
