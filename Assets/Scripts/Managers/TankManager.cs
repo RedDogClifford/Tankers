@@ -12,12 +12,14 @@ public class TankManager
     [HideInInspector] public GameObject instance;
 
     private TankMovement movement;
+    private GameObject canvasGameObject;
 
     public void SetUp()
     {
         //Grab Tank Components
         //
         movement = instance.GetComponent<TankMovement>();
+        canvasGameObject = instance.GetComponentInChildren<Canvas>().gameObject;
 
         //Use tank number?
         movement.tankNumber = tankNumber;
@@ -34,11 +36,15 @@ public class TankManager
     public void DisableControl()
     {
         movement.enabled = false;
+
+        canvasGameObject.SetActive(false);
     }
 
     public void EnableControl()
     {
         movement.enabled = true;
+
+        canvasGameObject.SetActive(true);
     }
 
     public void Reset()

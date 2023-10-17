@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public TankManager[] tanks; //List of tanks in level, 1st tank is player
+    public TankManager[] playerTanks; //List of tanks in level, 1st tank is player
+    public TankAgentManager[] tankAgents;
     public CameraControl cameraControl;
 
     // Start is called before the first frame update
@@ -16,25 +17,39 @@ public class GameManager : MonoBehaviour
 
     private void SpawnAllTanks()
     {
-        for(int i=0; i<tanks.Length; i++)
+        for(int i=0; i< tankAgents.Length; i++)
         {
             //Spawn tank instance (prefab, position, rotation)
-            tanks[i].instance = Instantiate(tanks[i].tankPrefab, tanks[i].spawnPoint.position, tanks[i].spawnPoint.rotation) as GameObject;
-            tanks[i].tankNumber = i + 1;
-            tanks[i].SetUp();
+            tankAgents[i].instance = Instantiate(tankAgents[i].tankPrefab, tankAgents[i].spawnPoint.position, tankAgents[i].spawnPoint.rotation) as GameObject;
+            tankAgents[i].tankNumber = i + 1;
+            tankAgents[i].SetUp();
+        }
+
+        for(int i=0; i< playerTanks.Length; i++)
+        {
+            //Spawn tank instance (prefab, position, rotation)
+            playerTanks[i].instance = Instantiate(playerTanks[i].tankPrefab, playerTanks[i].spawnPoint.position, playerTanks[i].spawnPoint.rotation) as GameObject;
+            playerTanks[i].tankNumber = i + 1;
+            playerTanks[i].SetUp();
         }
     }
 
     private void SetCameraTargets()
     {
         //Create collection of transforms for each tank
-        Transform[] targets = new Transform[tanks.Length];
+        Transform[] targets = new Transform[playerTanks.Length + tankAgents.Length];
 
-        for(int i=0; i < targets.Length; i++)
+        for(int i=0; i < playerTanks.Length; i++)
         {
             //Set targets to each tank transform
-            targets[i] = tanks[i].instance.transform;
+            targets[i] = playerTanks[i].instance.transform;
         }
+
+        for(int i=0; i< tankAgents.Length; i++)
+        {
+            targets[playerTanks.Length + i] = tankAgents[i].instance.transform; 
+        }
+        
 
         //Set targets camera will follow
         cameraControl.targets = targets;
