@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     public TankManager[] playerTanks; //List of tanks in level, 1st tank is player
     public TankAgentManager[] tankAgents;
+
     public CameraControl cameraControl;
+
+    public GameObject eventSystem;
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,9 @@ public class GameManager : MonoBehaviour
             //Spawn tank instance (prefab, position, rotation)
             playerTanks[i].instance = Instantiate(playerTanks[i].tankPrefab, playerTanks[i].spawnPoint.position, playerTanks[i].spawnPoint.rotation) as GameObject;
             playerTanks[i].tankNumber = i + 1;
+            playerTanks[i].camera = cameraControl.camera;
+            playerTanks[i].eventSystem = eventSystem.GetComponent<EventSystem>();
+            playerTanks[i].raycaster = canvas.GetComponent<GraphicRaycaster>();
             playerTanks[i].SetUp();
         }
     }

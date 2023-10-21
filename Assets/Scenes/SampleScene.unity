@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 9536734}
   - component: {fileID: 9536733}
   - component: {fileID: 9536732}
-  - component: {fileID: 9536731}
   - component: {fileID: 9536730}
+  - component: {fileID: 9536735}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -162,27 +162,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: f46d2d58
---- !u!65 &9536731
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9536729}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9536732
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -248,6 +227,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9536735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9536729}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +311,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -683,7 +683,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 634630627}
-  - component: {fileID: 634630628}
   m_Layer: 0
   m_Name: CanvasManager
   m_TagString: Untagged
@@ -707,18 +706,6 @@ Transform:
   - {fileID: 2078863988}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &634630628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634630626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dbcef99da3ae1e46857dd7cfb52ce0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,7 +1166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dampTime: 0.2
   screenEdgeBuffer: 4
-  minSize: 12
+  minSize: 10
   targets: []
   camera: {fileID: 0}
 --- !u!1 &1353849062
@@ -1352,6 +1339,9 @@ MonoBehaviour:
       type: 3}
     tankNumber: 0
     instance: {fileID: 0}
+    camera: {fileID: 0}
+    eventSystem: {fileID: 0}
+    raycaster: {fileID: 0}
   tankAgents:
   - tankColor: {r: 1, g: 0.21383637, b: 0.21383637, a: 0}
     spawnPoint: {fileID: 1655065822}
@@ -1361,6 +1351,8 @@ MonoBehaviour:
     tankNumber: 0
     instance: {fileID: 0}
   cameraControl: {fileID: 1348988981}
+  eventSystem: {fileID: 951017973}
+  canvas: {fileID: 2078863987}
 --- !u!4 &1433644719
 Transform:
   m_ObjectHideFlags: 0
