@@ -26,7 +26,7 @@ public class TankHealth : MonoBehaviour
         SetHealthUI();
     }
 
-    private void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
 

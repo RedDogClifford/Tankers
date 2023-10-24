@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 193446386485747738}
   - component: {fileID: 4000151421249334026}
   - component: {fileID: 3839213945936550180}
-  - component: {fileID: 7007738333132739550}
+  - component: {fileID: 33690524251164956}
   m_Layer: 0
   m_Name: PlayerNormalBullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8776d9dfa4b6f4b8c233031d9fc1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 10
   duration: 3
+  damage: 100
+  opposingTag: Enemy
 --- !u!54 &3839213945936550180
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68,7 +70,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -76,8 +78,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &7007738333132739550
-SphereCollider:
+--- !u!65 &33690524251164956
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,8 +97,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.40910053
-  m_Center: {x: 0.09089947, y: 0, z: 0.27}
+  m_Size: {x: 0.449099, y: 0.44596687, z: 0.77398306}
+  m_Center: {x: 0.00074243546, y: -0.0008236617, z: 0.29561874}
 --- !u!1001 &78406965030422422
 PrefabInstance:
   m_ObjectHideFlags: 0

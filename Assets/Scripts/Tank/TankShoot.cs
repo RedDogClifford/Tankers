@@ -9,27 +9,26 @@ public class TankShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
 
-    [HideInInspector] public Camera camera;
+    [HideInInspector] public Camera gameCamera;
     [HideInInspector] public EventSystem eventSystem;
     [HideInInspector] public GraphicRaycaster raycaster;
+    private BoxCollider bulletSpawnLocation;
 
     private PointerEventData pointerEventData;
 
     public float reloadDelay = 1f;
     private float timer = 0f;
 
-    public TankAim tankAim;
-
     [SerializeField]
     private InputActionReference shoot;
 
-    private Button touch;
     private bool canShoot = false;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        OnEnable();   
+        bulletSpawnLocation = GetComponent<BoxCollider>();
+        OnEnable();
     }
 
     private void OnEnable()
@@ -64,20 +63,58 @@ public class TankShoot : MonoBehaviour
 
     private void ShootBullet(InputAction.CallbackContext context)
     {
-        //Player wants to shoot bullet    
-        if (canShoot && NotUI())
+        //Player wants to shoot bullet            
+        Vector2 bulletDirection = context.ReadValue<Vector2>();
+
+        Debug.Log("here! " + bulletDirection);
+
+        if (canShoot)
         {
+            Vector3 direction = new Vector3(transform.position.x + bulletDirection.x, transform.position.y, transform.position.z + bulletDirection.y);
+
+            transform.LookAt(direction);
+
             //Shoot bullet
             canShoot = false;
-            Instantiate(bulletPrefab, tankAim.transformTA.TransformPoint(tankAim.bulletSpawnLocation.center), tankAim.transformTA.rotation);
+            Instantiate(bulletPrefab, transform.TransformPoint(bulletSpawnLocation.center), transform.rotation);
         }
     }
 
+    /*
+    private void ShootBullet(InputAction.CallbackContext context)
+    {
+        //Player wants to shoot bullet            
+        Vector2 bulletDirection = context.ReadValue<Vector2>();
+
+        Debug.Log("here! " + bulletDirection);
+
+        if (canShoot && NotUI(bulletDirection))
+        {
+            RaycastHit hit;
+            Ray ray = gameCamera.ScreenPointToRay(bulletDirection);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                //maybe filter to mask layer
+                //then create a collider layer for this with specific mask name
+
+                Vector3 touchWorldPosition = hit.point;
+                touchWorldPosition.y = transform.position.y;
+
+                transform.LookAt(touchWorldPosition);
+
+                //Shoot bullet
+                canShoot = false;
+                Instantiate(bulletPrefab, transform.TransformPoint(bulletSpawnLocation.center), transform.rotation);
+            }
+        }        
+    }
+
     //Ensure user is not clicking on a UI element
-    private bool NotUI()
+    private bool NotUI(Vector2 bulletDirection)
     {
         pointerEventData = new PointerEventData(eventSystem);
-        pointerEventData.position = tankAim.bulletDirection;
+        pointerEventData.position = bulletDirection;
 
         List<RaycastResult> results = new List<RaycastResult>();
         raycaster.Raycast(pointerEventData, results);
@@ -89,4 +126,5 @@ public class TankShoot : MonoBehaviour
 
         return false;
     }
+    */
 }

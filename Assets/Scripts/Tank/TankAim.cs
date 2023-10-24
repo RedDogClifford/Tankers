@@ -6,19 +6,14 @@ using UnityEngine.InputSystem;
 public class TankAim : MonoBehaviour
 {
     [HideInInspector] public Vector2 bulletDirection;
-    [HideInInspector] public Camera camera;
+    [HideInInspector] public Camera gameCamera;
 
     [SerializeField]
     private InputActionReference aim;
 
-    [HideInInspector] public Vector3 touchWorldPosition;
-    [HideInInspector] public BoxCollider bulletSpawnLocation;
-    [HideInInspector] public Transform transformTA;
-
     // Start is called before the first frame update
     void Start()
     {
-        bulletSpawnLocation = GetComponent<BoxCollider>();
         OnEnable();
     }
 
@@ -34,24 +29,13 @@ public class TankAim : MonoBehaviour
 
     private void AimTurret(InputAction.CallbackContext context)
     {
-        bulletDirection = context.ReadValue<Vector2>();
+        Vector2 bulletDirection = context.ReadValue<Vector2>();
 
         //Update turrent direction
+        Vector3 direction = new Vector3(transform.position.x + bulletDirection.x, transform.position.y, transform.position.z + bulletDirection.y);
 
-        RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(bulletDirection);
+        //Add camera rotation
 
-        if(Physics.Raycast(ray, out hit))
-        {
-            //maybe filter to mask layer
-            //then create a collider layer for this with specific mask name
-
-            touchWorldPosition = hit.point;
-            touchWorldPosition.y = transform.position.y;
-
-            transform.LookAt(touchWorldPosition);
-
-            transformTA = transform;
-        }
+        transform.LookAt(direction);
     }
 }

@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &489696924550229515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1554132409625913778}
+  - component: {fileID: 1128389979537356613}
+  m_Layer: 8
+  m_Name: Base
+  m_TagString: Player
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1554132409625913778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489696924550229515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3144120004565364988}
+  m_Father: {fileID: 2994929079111448574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1128389979537356613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489696924550229515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e1b90179645c7458e52c1e549a8f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: -1611320380839578685, guid: bbfe580cea955b642be34d1caea48e80,
+    type: 3}
 --- !u!1 &810554701001744783
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,12 +56,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7199992709919871735}
+  - component: {fileID: 1741361324939894577}
   - component: {fileID: 7204716459392117934}
   - component: {fileID: 684770187871742937}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Turret
-  m_TagString: Turret
-  m_Icon: {fileID: 0}
+  m_TagString: Player
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -31,9 +79,29 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7011699470137963121}
   - {fileID: 4012483903529119207}
   m_Father: {fileID: 2994929079111448574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1741361324939894577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810554701001744783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a88a768c53c7949922e79091dc7e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6901951382032678345, guid: 32a851d5ed79fe04da8ca2e7a5a27d11,
+    type: 3}
+  gameCamera: {fileID: 0}
+  eventSystem: {fileID: 0}
+  raycaster: {fileID: 0}
+  reloadDelay: 1
+  shoot: {fileID: 1369963918553962410, guid: bbfe580cea955b642be34d1caea48e80, type: 3}
 --- !u!114 &7204716459392117934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,11 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDirection: {x: 0, y: 0}
-  camera: {fileID: 0}
+  gameCamera: {fileID: 0}
   aim: {fileID: 1369963918553962410, guid: bbfe580cea955b642be34d1caea48e80, type: 3}
-  touchWorldPosition: {x: 0, y: 0, z: 0}
-  bulletSpawnLocation: {fileID: 0}
-  transformTA: {fileID: 0}
 --- !u!65 &684770187871742937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85,7 +150,7 @@ GameObject:
   - component: {fileID: 6358689514605672055}
   - component: {fileID: 4704379938880818916}
   - component: {fileID: 375518802231649091}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +170,7 @@ Transform:
   m_LocalScale: {x: 1.2, y: 0.3, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2994929079111448574}
+  m_Father: {fileID: 1554132409625913778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6358689514605672055
 MeshFilter:
@@ -187,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967561241493227393}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +290,7 @@ GameObject:
   - component: {fileID: 4012483903529119207}
   - component: {fileID: 8483290919768649809}
   - component: {fileID: 7592085557825725710}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -308,7 +373,7 @@ GameObject:
   - component: {fileID: 7717367671222362554}
   - component: {fileID: 8025653863193870787}
   - component: {fileID: 1342019867061762861}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +448,7 @@ GameObject:
   - component: {fileID: 3902600929206105039}
   - component: {fileID: 3032158921394579874}
   - component: {fileID: 7332090321475882027}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +552,7 @@ GameObject:
   - component: {fileID: 3544096993184992668}
   - component: {fileID: 1005942903735104968}
   - component: {fileID: 673393968056951333}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,11 +568,11 @@ Transform:
   m_GameObject: {fileID: 3870607876492087039}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2994929079111448574}
+  m_Father: {fileID: 7199992709919871735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3544096993184992668
 MeshFilter:
@@ -593,7 +658,7 @@ GameObject:
   - component: {fileID: 5613978679677325870}
   - component: {fileID: 4346289711226839965}
   - component: {fileID: 8296045442979777736}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,14 +731,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268014410960823601}
-  - component: {fileID: -657914064196161284}
   - component: {fileID: -6405672097477852343}
-  - component: {fileID: -1516910187882365130}
-  - component: {fileID: -562665953944191595}
-  - component: {fileID: -1469807237852249246}
-  m_Layer: 6
+  - component: {fileID: 8245539494627147621}
+  - component: {fileID: 1079489143925801294}
+  - component: {fileID: 2859900833590481249}
+  m_Layer: 8
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -695,24 +759,6 @@ Transform:
   - {fileID: 5346867534541803724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-657914064196161284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5837353773880401765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7b547215fc4ff4c94729b71a6eeace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tankNumber: 1
-  speed: 6
-  turnSpeed: 180
-  rigidbody: {fileID: 0}
-  movement: {fileID: -1611320380839578685, guid: bbfe580cea955b642be34d1caea48e80,
-    type: 3}
 --- !u!114 &-6405672097477852343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +776,7 @@ MonoBehaviour:
   fillImage: {fileID: 8296045442979777736}
   fullHealthColor: {r: 0, g: 1, b: 0, a: 1}
   zeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &-1516910187882365130
+--- !u!114 &8245539494627147621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -739,18 +785,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 5837353773880401765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a88a768c53c7949922e79091dc7e90, type: 3}
+  m_Script: {fileID: 11500000, guid: af7b547215fc4ff4c94729b71a6eeace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6901951382032678345, guid: 32a851d5ed79fe04da8ca2e7a5a27d11,
+  tankNumber: 1
+  speed: 0.1
+  movement: {fileID: -1611320380839578685, guid: bbfe580cea955b642be34d1caea48e80,
     type: 3}
-  camera: {fileID: 0}
-  eventSystem: {fileID: 0}
-  raycaster: {fileID: 0}
-  reloadDelay: 1
-  tankAim: {fileID: 7204716459392117934}
-  shoot: {fileID: 7081685269260733333, guid: bbfe580cea955b642be34d1caea48e80, type: 3}
---- !u!65 &-562665953944191595
+--- !u!54 &1079489143925801294
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5837353773880401765}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &2859900833590481249
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -769,35 +838,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.0636828, z: 1}
-  m_Center: {x: 0, y: 1.0127867, z: 0}
---- !u!54 &-1469807237852249246
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5837353773880401765}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Size: {x: 1, y: 2.01033, z: 1}
+  m_Center: {x: 0, y: 0.988937, z: 0}
 --- !u!1 &8111328507756781763
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2994929079111448574}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: TankRenderers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,9 +869,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7011699470137963121}
-  - {fileID: 3144120004565364988}
   - {fileID: 7199992709919871735}
+  - {fileID: 1554132409625913778}
   m_Father: {fileID: 1268014410960823601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8283030574495301104
@@ -844,7 +885,7 @@ GameObject:
   - component: {fileID: 8256663622046477838}
   - component: {fileID: 6378005729454094599}
   - component: {fileID: 7616030217613023239}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

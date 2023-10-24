@@ -13,7 +13,7 @@ public class TankManager
     [HideInInspector] public int tankNumber;
     [HideInInspector] public GameObject instance;
 
-    [HideInInspector] public Camera camera;
+    [HideInInspector] public Camera gameCamera;
     [HideInInspector] public EventSystem eventSystem;
     [HideInInspector] public GraphicRaycaster raycaster;
 
@@ -28,15 +28,15 @@ public class TankManager
         //
         movement = instance.GetComponent<TankMovement>();
         canvasGameObject = instance.GetComponentInChildren<Canvas>().gameObject;
-        turret = instance.GetComponent<TankShoot>();
+        turret = instance.GetComponentInChildren<TankShoot>();
         turretPiece = instance.GetComponentInChildren<TankAim>();
 
         //Use tank number?
         movement.tankNumber = tankNumber;
 
-        turretPiece.camera = camera;
+        turretPiece.gameCamera = gameCamera;
 
-        turret.camera = camera;
+        turret.gameCamera = gameCamera;
         turret.eventSystem = eventSystem;
         turret.raycaster = raycaster;
 

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             //Spawn tank instance (prefab, position, rotation)
             playerTanks[i].instance = Instantiate(playerTanks[i].tankPrefab, playerTanks[i].spawnPoint.position, playerTanks[i].spawnPoint.rotation) as GameObject;
             playerTanks[i].tankNumber = i + 1;
-            playerTanks[i].camera = cameraControl.camera;
+            playerTanks[i].gameCamera = cameraControl.gameCamera;
             playerTanks[i].eventSystem = eventSystem.GetComponent<EventSystem>();
             playerTanks[i].raycaster = canvas.GetComponent<GraphicRaycaster>();
             playerTanks[i].SetUp();

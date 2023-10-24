@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
+  - Wall
   - Turret
+  - Bullet
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -12,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Turret
+  - Enemy
   - Player
-  - 
-  - 
   - 
   - Post Processing
   - 
