@@ -7,7 +7,7 @@ public class CameraControl : MonoBehaviour
     public float minSize = 6.5f;
     [HideInInspector] public Transform[] targets;
 
-    private Camera camera; //Camera Reference
+    [HideInInspector] public Camera gameCamera; //Camera Reference
     private Vector3 desiredPosition; //Position camera is moving towards
 
     private Vector3 moveVelocity; //Reference velocity for smooth damping of camera position
@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour
 
     private void Awake()
     {
-        camera = GetComponentInChildren<Camera>();
+        gameCamera = GetComponentInChildren<Camera>();
     }
 
     private void FixedUpdate()
@@ -56,7 +56,7 @@ public class CameraControl : MonoBehaviour
     private void Zoom()
     {
         float requiredSize = FindRequiredSize();
-        camera.orthographicSize = Mathf.SmoothDamp(camera.orthographicSize, requiredSize, ref zoomSpeed, dampTime);
+        gameCamera.orthographicSize = Mathf.SmoothDamp(gameCamera.orthographicSize, requiredSize, ref zoomSpeed, dampTime);
     }
 
     private float FindRequiredSize()
@@ -77,7 +77,7 @@ public class CameraControl : MonoBehaviour
 
             //Take largest sizes
             size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y));
-            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / camera.aspect);
+            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / gameCamera.aspect);
         }
 
         size += screenEdgeBuffer; //Maintain buffer space for screen
@@ -91,6 +91,6 @@ public class CameraControl : MonoBehaviour
     {
         FindAveragePositions();
         transform.position = desiredPosition;
-        camera.orthographicSize = FindRequiredSize();
+        gameCamera.orthographicSize = FindRequiredSize();
     }
 }

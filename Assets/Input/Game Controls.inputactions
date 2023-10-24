@@ -1,0 +1,54 @@
+{
+    "name": "Game Controls",
+    "maps": [
+        {
+            "name": "Player Input",
+            "id": "40fdffed-4c78-44b2-82b4-1bab964335c5",
+            "actions": [
+                {
+                    "name": "BaseDirection",
+                    "type": "Value",
+                    "id": "9e3c7638-8b53-41aa-a48f-f315cacce38d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TurretDirection",
+                    "type": "Value",
+                    "id": "d278d7d2-d17d-4062-bce1-ac3ca0506562",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "28b320a9-f198-4bb7-82ee-b95d77279c7a",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BaseDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "035a0942-d8cb-4c74-85d2-f9f9137091b5",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurretDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
